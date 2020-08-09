@@ -12,6 +12,10 @@ def add_blank_rows(qty, df):
         # append single blank row to dataframe
         df = df.append(blank_row)
 
+    return df
+
+
+def correct_index_record(df):
     # reset index
     df = df.reset_index(drop=True)
 
@@ -19,7 +23,7 @@ def add_blank_rows(qty, df):
     for index, row in df.iterrows():
         if row["Record"] != index + 1:
             df.loc[index, "Record"] = index + 1
-
+    
     return df
 
 
@@ -61,10 +65,14 @@ def main():
         # join onto final dataframe and add required blank rows
         new_df = new_df.append(temp_df)
         new_df = add_blank_rows(blanks_needed, new_df)
+    
+    # correct all indexes & records
+    new_df = correct_index_record(new_df)
+    print('only ran correction once')
 
     # create output csv file
     new_df.to_csv('output.csv', index=False)
-
+    return 0
 
 if __name__ == "__main__":
     main()

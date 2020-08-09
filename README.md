@@ -7,6 +7,6 @@ program is to be ran from the command terminal.
 It takes one additional argument - the csv file to be converted.
 
 Example:
-python3 till_csv_conv.py test.csv
+python3 epos_csv_generator.py test.csv
 
 The output file (output.csv) is automatically saved in the same folder. 
