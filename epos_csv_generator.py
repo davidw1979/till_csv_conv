@@ -42,7 +42,8 @@ def main():
         exit("Incorrect usage. This program takes 1 command line argument - the csv filename.")
 
     # load files & set start & highest department variables
-    df = pd.read_csv(sys.argv[1])
+    # encoding parameter solves potential utf-8 error
+    df = pd.read_csv(sys.argv[1], encoding='latin1')
     current_dept = 1
     final_dept = df.iloc[len(df) - 1]["Department Link"]
 
